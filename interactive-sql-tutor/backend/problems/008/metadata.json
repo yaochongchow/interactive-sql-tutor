@@ -1,0 +1,53 @@
+{
+    "problem_id": 8,
+    "title": "Average Years of Experience per Project",
+    "description": "Write an SQL query that reports the average experience years of all the employees for each project, rounded to 2 digits. Return the result table in any order.",
+    "difficulty_level": "Hard",
+    "topic_id": 4,
+    "requires_order": false,
+    "tables": [
+      {
+        "table_name": "Project",
+        "columns": [
+          { "name": "project_id", "type": "int", "description": "ID of the project" },
+          { "name": "employee_id", "type": "int", "description": "ID of the assigned employee" }
+        ]
+      },
+      {
+        "table_name": "Employee",
+        "columns": [
+          { "name": "employee_id", "type": "int", "description": "ID of the employee" },
+          { "name": "name", "type": "varchar(10)", "description": "Name of the employee" },
+          { "name": "experience_years", "type": "int", "description": "Years of experience" }
+        ]
+      }
+    ],
+    "input_data": {
+      "Project": [
+        ["project_id", "employee_id"],
+        [1, 1],
+        [1, 2],
+        [1, 3],
+        [2, 1],
+        [2, 4]
+      ],
+      "Employee": [
+        ["employee_id", "name", "experience_years"],
+        [1, "Khaled", 3],
+        [2, "Ali", 2],
+        [3, "John", 1],
+        [4, "Doe", 2]
+      ]
+    },
+    "hints": [
+      "Use JOIN to combine the Project and Employee tables by employee_id.",
+      "Use AVG() to calculate the average experience per project.",
+      "Use ROUND(..., 2) to round the average to 2 decimal places.",
+      "GROUP BY project_id to aggregate by project."
+    ],
+    "expected_output": [
+      ["project_id", "average_years"],
+      [1, 2.00],
+      [2, 2.50]
+    ]
+  }

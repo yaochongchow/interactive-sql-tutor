@@ -1,0 +1,23 @@
+.gelatine {
+  animation: gelatine 0.5s ease-in-out;
+}
+
+@keyframes gelatine {
+  from,
+  to {
+    transform: scale(1, 1);
+  }
+  25% {
+    transform: scale(0.95, 1.05);
+  }
+  50% {
+    transform: scale(1.05, 0.95);
+  }
+  75% {
+    transform: scale(0.978, 1.03);
+  }
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

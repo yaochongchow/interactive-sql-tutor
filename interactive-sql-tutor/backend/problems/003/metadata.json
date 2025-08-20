@@ -1,0 +1,37 @@
+{
+    "problem_id": 3,
+    "title": "Find Master Students",
+    "description": "Write an SQL query to report the student_id, student_name of students whose degree is master. Master degree always starts with MS prefix.\nReturn the result table in any order.",
+    "difficulty_level": "Easy",
+    "topic_id": 1,
+    "requires_order": false,
+    "tables": [
+      {
+        "table_name": "Students",
+        "columns": [
+          { "name": "student_id", "type": "int", "description": "Primary key" },
+          { "name": "student_name", "type": "varchar(30)" },
+          { "name": "major", "type": "varchar(100)", "description": "May contain degree prefix like MS, BS, etc." }
+        ]
+      }
+    ],
+    "input_data": {
+      "Students": [
+        ["student_id", "student_name", "major"],
+        [1, "Daniel", "MSCS"],
+        [2, "Alice", ""],
+        [3, "Bob", "BSCS"],
+        [4, "George", "MSEE-CE"],
+        [5, "Alain", "MSCS"]
+      ]
+    },
+    "hints": [
+      "The pattern 'MS%' matches any text that begins with 'MS'."
+    ],
+    "expected_output": [
+      ["student_id", "student_name"],
+      [1, "Daniel"],
+      [5, "Alain"]
+    ]
+}
+  

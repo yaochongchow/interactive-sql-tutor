@@ -1,0 +1,50 @@
+{
+    "problem_id": 9,
+    "title": "Department Employee Count",
+    "description": "Write an SQL query to report the respective department name and number of employees working in each department for all departments in the Department table (even ones with no current employee). Return the result table ordered by emp_number in descending order. In case of a tie, order them by dept_name alphabetically.",
+    "difficulty_level": "Hard",
+    "topic_id": 4,
+    "requires_order": true,
+    "tables": [
+      {
+        "table_name": "Emp",
+        "columns": [
+          { "name": "emp_id", "type": "int", "description": "Employee ID" },
+          { "name": "emp_name", "type": "varchar(45)", "description": "Employee name" },
+          { "name": "gender", "type": "varchar(6)", "description": "Employee gender" },
+          { "name": "dept_id", "type": "int", "description": "Foreign key to Dept.dept_id" }
+        ]
+      },
+      {
+        "table_name": "Dept",
+        "columns": [
+          { "name": "dept_id", "type": "int", "description": "Department ID" },
+          { "name": "dept_name", "type": "varchar(255)", "description": "Department name" }
+        ]
+      }
+    ],
+    "input_data": {
+      "Emp": [
+        ["emp_id", "emp_name", "gender", "dept_id"],
+        [1, "Jack", "M", 1],
+        [2, "Jane", "F", 1],
+        [3, "Mark", "M", 2]
+      ],
+      "Dept": [
+        ["dept_id", "dept_name"],
+        [1, "Engineering"],
+        [2, "Science"],
+        [3, "Law"]
+      ]
+    },
+    "hints": [
+      "Use LEFT JOIN to include departments with no employees.",
+      "Group by department name and use COUNT to count employees."
+    ],
+    "expected_output": [
+      ["dept_name", "emp_number"],
+      ["Engineering", 2],
+      ["Science", 1],
+      ["Law", 0]
+    ]
+  }

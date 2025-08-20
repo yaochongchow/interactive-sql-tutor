@@ -1,0 +1,34 @@
+{
+    "problem_id": 5,
+    "title": "Customer Placing the Largest Number of Orders",
+    "description": "Write an SQL query to find the customer_number for the customer who has placed the largest number of orders.\nThe test cases are generated so that exactly one customer will have placed more orders than any other customer.",
+    "difficulty_level": "Easy",
+    "topic_id": 2,
+    "requires_order": false,
+    "tables": [
+      {
+        "table_name": "Orders",
+        "columns": [
+          { "name": "order_number", "type": "int", "description": "Order ID" },
+          { "name": "customer_number", "type": "int", "description": "Customer ID who placed the order" }
+        ]
+      }
+    ],
+    "input_data": {
+      "Orders": [
+        ["order_number", "customer_number"],
+        [1, 1],
+        [2, 2],
+        [3, 3],
+        [4, 3]
+      ]
+    },
+    "hints": [
+      "Use COUNT(*) to count the number of orders per customer.",
+      "Use ORDER BY and LIMIT to get the customer with the most orders."
+    ],
+    "expected_output": [
+      ["customer_number"],
+      [3]
+    ]
+}

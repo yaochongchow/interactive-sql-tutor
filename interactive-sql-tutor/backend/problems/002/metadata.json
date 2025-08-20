@@ -1,0 +1,40 @@
+{
+    "problem_id": 2,
+    "title": "Find Customer Referee",
+    "description": "Write an SQL query to report the names of the customers that are not referred by the customer with id = 2.\nReturn the result table in any order.",
+    "difficulty_level": "Easy",
+    "topic_id": 1,
+    "requires_order": false,
+    "tables": [
+      {
+        "table_name": "Customer",
+        "columns": [
+          {"name": "id", "type": "int", "description": "Primary key"},
+          {"name": "name", "type": "varchar(25)"},
+          {"name": "referee_id", "type": "int", "description": "Foreign key to id, can be null"}
+        ]
+      }
+    ],
+    "input_data": {
+      "Customer": [
+        ["id", "name", "referee_id"],
+        [1, "Will", null],
+        [2, "Jane", null],
+        [3, "Alex", 2],
+        [4, "Bill", null],
+        [5, "Zack", 1],
+        [6, "Mark", 2]
+      ]
+    },
+    "hints": [
+      "Use a WHERE clause to filter out customers with referee_id = 2."
+    ],
+    "expected_output": [
+      ["name"],
+      ["Will"],
+      ["Jane"],
+      ["Bill"],
+      ["Zack"]
+    ]
+}
+  

@@ -1,0 +1,62 @@
+{
+    "problem_id": 10,
+    "title": "Page Recommendations by Friends",
+    "description": "Write an SQL query to recommend pages to the user with user_id = 1 using the pages that their friends liked. Do not recommend pages that the user already liked. Return the result table in any order and without duplicates.",
+    "difficulty_level": "Medium",
+    "topic_id": 3,
+    "requires_order": false,
+    "tables": [
+      {
+        "table_name": "Friendship",
+        "columns": [
+          { "name": "user1_id", "type": "int", "description": "ID of one user in the friendship" },
+          { "name": "user2_id", "type": "int", "description": "ID of the other user in the friendship" }
+        ]
+      },
+      {
+        "table_name": "Likes",
+        "columns": [
+          { "name": "user_id", "type": "int", "description": "ID of the user who liked a page" },
+          { "name": "page_id", "type": "int", "description": "ID of the liked page" }
+        ]
+      }
+    ],
+    "input_data": {
+      "Friendship": [
+        ["user1_id", "user2_id"],
+        [1, 2],
+        [1, 3],
+        [1, 4],
+        [2, 3],
+        [2, 4],
+        [2, 5],
+        [6, 1]
+      ],
+      "Likes": [
+        ["user_id", "page_id"],
+        [1, 88],
+        [2, 23],
+        [3, 24],
+        [4, 56],
+        [5, 11],
+        [6, 33],
+        [2, 77],
+        [3, 77],
+        [6, 88]
+      ]
+    },
+    "hints": [
+      "Use a subquery to find all friends of user_id = 1 from both directions of the Friendship table.",
+      "Use another subquery to find pages liked by those friends.",
+      "Exclude the pages already liked by user_id = 1 using a NOT IN clause.",
+      "Use DISTINCT to eliminate duplicate page recommendations."
+    ],
+    "expected_output": [
+      ["recommended_page"],
+      [23],
+      [24],
+      [56],
+      [33],
+      [77]
+    ]
+  }

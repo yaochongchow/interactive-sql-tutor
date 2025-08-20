@@ -1,0 +1,39 @@
+{
+    "problem_id": 7,
+    "title": "Actors and Directors Who Cooperated At Least Three Times",
+    "description": "Write a SQL query for a report that provides the pairs (actor_id, director_id) where the actor has cooperated with the director at least three times.\nReturn the result table in any order.",
+    "difficulty_level": "Medium",
+    "topic_id": 2,
+    "requires_order": false,
+    "tables": [
+      {
+        "table_name": "ActorDirector",
+        "columns": [
+          { "name": "actor_id", "type": "int", "description": "ID of the actor" },
+          { "name": "director_id", "type": "int", "description": "ID of the director" },
+          { "name": "timestamp", "type": "date", "description": "Date when the actor and director worked together" }
+        ]
+      }
+    ],
+    "input_data": {
+      "ActorDirector": [
+        ["actor_id", "director_id", "timestamp"],
+        [1, 1, 0],
+        [1, 1, 1],
+        [1, 1, 2],
+        [1, 2, 3],
+        [1, 2, 4],
+        [2, 1, 5],
+        [2, 1, 6]
+      ]
+    },
+    "hints": [
+      "Group the rows by actor_id and director_id.",
+      "Use COUNT(*) to find how many times each pair appears.",
+      "Use HAVING to filter only those pairs with 3 or more collaborations."
+    ],
+    "expected_output": [
+      ["actor_id", "director_id"],
+      [1, 1]
+    ]
+}

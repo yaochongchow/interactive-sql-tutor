@@ -1,0 +1,41 @@
+{
+    "problem_id": 6,
+    "title": "Highest Sales per Employee",
+    "description": "Write a SQL query to find the highest sales with its corresponding product for each employee. In case of a tie, you should find the product with the smallest product_id.\nReturn the result table ordered by employee_id in ascending order.",
+    "difficulty_level": "Medium",
+    "topic_id": 2,
+    "requires_order": true,
+    "tables": [
+      {
+        "table_name": "Sales",
+        "columns": [
+          { "name": "employee_id", "type": "int", "description": "ID of the employee" },
+          { "name": "product_id", "type": "int", "description": "ID of the product" },
+          { "name": "sales", "type": "int", "description": "Number of sales" }
+        ]
+      }
+    ],
+    "input_data": {
+      "Sales": [
+        ["employee_id", "product_id", "sales"],
+        [2, 2, 95],
+        [2, 3, 95],
+        [1, 1, 90],
+        [1, 2, 99],
+        [3, 1, 80],
+        [3, 2, 82],
+        [3, 3, 82]
+      ]
+    },
+    "hints": [
+      "Use ROW_NUMBER() or RANK() with PARTITION BY employee_id to identify the top sales record per employee.",
+      "Sort ties by product_id to get the smallest one in case of equal sales.",
+      "Use a CTE or subquery to filter the top-ranked row for each employee."
+    ],
+    "expected_output": [
+      ["employee_id", "product_id", "sales"],
+      [1, 2, 99],
+      [2, 2, 95],
+      [3, 2, 82]
+    ]
+}
